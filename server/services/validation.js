@@ -19,6 +19,12 @@ module.exports = ( { strapi } ) => ( {
         case 'in':
           return value.includes( entity[ attr ] );
 
+        case 'has':
+          return entity[ attr ].includes( value );
+
+        case 'matches':
+          return new RegExp( value ).test( entity[ attr ] );
+
         default:
           return false;
       }
