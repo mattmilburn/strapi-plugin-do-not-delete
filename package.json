@@ -1,0 +1,48 @@
+{
+  "name": "strapi-plugin-do-not-delete",
+  "version": "0.1.0",
+  "description": "A plugin for Strapi CMS that protects certain entries from being deleted.",
+  "license": "MIT",
+  "strapi": {
+    "displayName": "Do Not Delete",
+    "name": "do-not-delete",
+    "description": "Protects certain entries from being deleted.",
+    "kind": "plugin"
+  },
+  "peerDependencies": {
+    "@strapi/strapi": "^4.9.0"
+  },
+  "dependencies": {},
+  "engines": {
+    "node": ">=14.19.1 <=18.x.x",
+    "npm": ">=6.0.0"
+  },
+  "author": {
+    "name": "Matt Milburn",
+    "url": "https://github.com/mattmilburn"
+  },
+  "maintainers": [
+    {
+      "name": "Matt Milburn",
+      "url": "https://github.com/mattmilburn"
+    }
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mattmilburn/strapi-plugin-do-not-delete.git"
+  },
+  "keywords": [
+    "strapi",
+    "plugin",
+    "dont",
+    "don't",
+    "do",
+    "not",
+    "delete",
+    "destroy",
+    "remove"
+  ]
+}
