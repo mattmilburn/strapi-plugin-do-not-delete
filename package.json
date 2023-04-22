@@ -10,7 +10,8 @@
     "kind": "plugin"
   },
   "peerDependencies": {
-    "@strapi/strapi": "^4.9.0"
+    "@strapi/strapi": "^4.9.0",
+    "@strapi/utils": "^4.9.0"
   },
   "dependencies": {},
   "engines": {
