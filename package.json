@@ -1,6 +1,6 @@
 {
   "name": "strapi-plugin-do-not-delete",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "A plugin for Strapi CMS that protects certain entries from being deleted.",
   "license": "MIT",
   "strapi": {
