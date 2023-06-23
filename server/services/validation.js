@@ -10,11 +10,12 @@ module.exports = ({ strapi }) => ({
       return;
     }
 
+    /**
+     * @TODO - i18n support for this error message.
+     */
+
     // Do not delete if this is a protected entry.
     if (isProtectedEntity(entity, rules)) {
-      /**
-       * @TODO - i18n support for this error message.
-       */
       throw new ValidationError('This entry is protected and cannot be deleted.');
     }
   },
