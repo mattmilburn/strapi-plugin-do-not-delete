@@ -45,5 +45,8 @@
     "delete",
     "destroy",
     "remove"
-  ]
+  ],
+  "devDependencies": {
+    "prettier": "2.8.8"
+  }
 }
