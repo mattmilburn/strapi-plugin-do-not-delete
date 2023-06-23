@@ -3,19 +3,20 @@
 const isProtectedEntity = (entity, rules) =>
   rules.some((rule) => {
     const [attr, comparator, value] = rule;
+    const entityAttr = entity[attr];
 
     switch (comparator) {
       case 'is':
-        return entity[attr] === value;
+        return entityAttr === value;
 
       case 'in':
-        return value.includes(entity[attr]);
+        return value.includes(entityAttr);
 
       case 'has':
-        return entity[attr].includes(value);
+        return entityAttr.includes(value);
 
       case 'matches':
-        return new RegExp(value).test(entity[attr]);
+        return new RegExp(value).test();
 
       default:
         return false;
