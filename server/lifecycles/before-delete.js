@@ -14,6 +14,7 @@ module.exports = async ( { strapi } ) => {
     const { uid } = model;
     const { where } = params;
 
+    // Ensure the entity exists first.
     const entity = await strapi.db.query( uid ).findOne( { where } );
 
     if ( ! entity ) {
