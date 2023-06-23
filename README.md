@@ -115,5 +115,6 @@ If you are enjoying this plugin and feel extra appreciative, you can [buy me a b
 
 ## <a id="roadmap"></a>🚧 Roadmap
 * Settings page to visually manage protected entries and their applicable rules.
+* Edit view sidebar button to "lock" an entity based on it's `id`.
 * Custom validation error messages.
 * More comparators for protection rules.
