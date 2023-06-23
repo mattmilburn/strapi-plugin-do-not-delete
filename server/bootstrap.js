@@ -1,8 +1,8 @@
 'use strict';
 
-const { beforeDelete } = require( './lifecycles' );
+const { beforeDelete } = require('./lifecycles');
 
-module.exports = async params => {
+module.exports = async (params) => {
   // Lifecycles.
-  await beforeDelete( params );
+  await beforeDelete(params);
 };
