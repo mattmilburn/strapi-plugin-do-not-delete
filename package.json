@@ -9,15 +9,6 @@
     "description": "Protects certain entries from being deleted.",
     "kind": "plugin"
   },
-  "peerDependencies": {
-    "@strapi/strapi": "^4.9.0",
-    "@strapi/utils": "^4.9.0"
-  },
-  "dependencies": {},
-  "engines": {
-    "node": ">=14.19.1 <=18.x.x",
-    "npm": ">=6.0.0"
-  },
   "author": {
     "name": "Matt Milburn",
     "url": "https://github.com/mattmilburn"
@@ -28,10 +19,22 @@
       "url": "https://github.com/mattmilburn"
     }
   ],
+  "engines": {
+    "node": ">=14.19.1 <=18.x.x",
+    "npm": ">=6.0.0"
+  },
   "scripts": {
     "pretty": "npx prettier --write \"server/**/*.js\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "devDependencies": {
+    "prettier": "2.8.8"
+  },
+  "peerDependencies": {
+    "@strapi/strapi": "^4.9.0",
+    "@strapi/utils": "^4.9.0"
+  },
+  "dependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mattmilburn/strapi-plugin-do-not-delete.git"
@@ -46,8 +49,5 @@
     "delete",
     "destroy",
     "remove"
-  ],
-  "devDependencies": {
-    "prettier": "2.8.8"
-  }
+  ]
 }
