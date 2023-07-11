@@ -46,7 +46,7 @@ module.exports = {
     config: {
       contentTypes: {
         'api::page.page': [
-          [ 'slug', 'is', 'home' ],
+          ['slug', 'is', 'home'],
         ],
       },
     },
@@ -77,11 +77,11 @@ module.exports = {
     config: {
       contentTypes: {
         'api::page.page': [
-          [ 'slug', 'is', 'home' ],
-          [ 'slug', 'in', [ 'home', 'blog', '404' ] ],
-          [ 'slug', 'has', 'admin' ],
-          [ 'slug', 'matches', '^foobar' ], // same as "starts with"
-          [ 'slug', 'matches', 'foobar$' ], // same as "ends with"
+          ['slug', 'is', 'home'],
+          ['slug', 'in', ['home', 'blog', '404']],
+          ['slug', 'has', 'admin'],
+          ['slug', 'matches', '^foobar'], // same as "starts with"
+          ['slug', 'matches', 'foobar$'], // same as "ends with"
         ],
       },
     },
