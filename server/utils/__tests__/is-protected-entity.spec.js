@@ -67,11 +67,4 @@ describe('isProtectedEntity', () => {
     const result = isProtectedEntity(entity, rules);
     expect(result).toBe(false);
   });
-
-  it('should return `false` if the provided `rules` are not fully configured', () => {
-    const entity = { type: 'user' };
-    expect(isProtectedEntity(entity, [[]])).toBe(false);
-    expect(isProtectedEntity(entity, [[], ['name']])).toBe(false);
-    expect(isProtectedEntity(entity, [[], ['name'], ['name', 'is']])).toBe(false);
-  });
 });

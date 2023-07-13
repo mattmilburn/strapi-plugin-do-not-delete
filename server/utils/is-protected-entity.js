@@ -2,7 +2,6 @@
 
 const isProtectedEntity = (entity, rules) =>
   rules.some((rule) => {
-    if(rule.length !== 3) return false
     const [attr, comparator, value] = rule;
     const entityAttr = entity[attr];
 
