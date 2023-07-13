@@ -16,7 +16,7 @@ const isProtectedEntity = (entity, rules) =>
         return entityAttr.includes(value);
 
       case 'matches':
-        return new RegExp(value).test();
+        return new RegExp(value).test(entityAttr);
 
       default:
         return false;
