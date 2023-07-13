@@ -17,7 +17,7 @@ const COMPARATOR_ACTION_STRATEGY = {
   [COMPARATORS.notIn]: (value, entityAttr) => !value.includes(entityAttr),
   [COMPARATORS.has]: (value, entityAttr) => entityAttr.includes(value),
   [COMPARATORS.hasNot]: (value, entityAttr) => !entityAttr.includes(value),
-  [COMPARATORS.matches]: (value) => RegExp(value).test(),
+  [COMPARATORS.matches]: (value, entityAttr) => RegExp(value).test(entityAttr),
 };
 
 const isProtectedEntity = (entity, rules) =>
