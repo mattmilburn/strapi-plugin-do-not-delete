@@ -1,2 +1,7 @@
+.husky
 build
 coverage
+node_modules
+public
+LICENSE.md
+README.md
