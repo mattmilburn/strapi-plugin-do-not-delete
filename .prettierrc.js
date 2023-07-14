@@ -1,3 +1,5 @@
+'use strict';
+
 // Same as Strapi .prettierrc.js.
 module.exports = {
   endOfLine: 'lf',
