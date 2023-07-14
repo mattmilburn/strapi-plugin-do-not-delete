@@ -24,7 +24,8 @@
     "npm": ">=6.0.0"
   },
   "scripts": {
-    "pretty": "npx prettier --write \"./**/*.js\"",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx ./",
+    "format": "prettier --write \"**/*.+(js|jsx|ts|tsx|json|css|md)\"",
     "test": "jest --testPathPattern='\\/__tests__\\/.*\\.(?:test|spec)\\.js$' --ci  2>&1"
   },
   "devDependencies": {
