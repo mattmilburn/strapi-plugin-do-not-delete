@@ -4,7 +4,7 @@ const { ValidationError } = require('@strapi/utils').errors;
 
 const { isProtectedEntity } = require('../utils');
 
-module.exports = ({ strapi }) => ({
+module.exports = () => ({
   validate(entity, rules) {
     if (!rules.length) {
       return;
