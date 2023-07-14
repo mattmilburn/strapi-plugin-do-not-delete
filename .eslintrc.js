@@ -1,38 +1,56 @@
+'use strict';
+
 module.exports = {
-  parser: '@babel/eslint-parser',
   parserOptions: {
-    ecmaFeatures: {
-      experimentalObjectRestSpread: true,
-      jsx: true,
-    },
-    sourceType: 'module',
-    requireConfigFile: false,
-    babelOptions: {
-      presets: [['@babel/preset-react', { runtime: 'automatic' }]],
-    },
+    ecmaVersion: 2020,
   },
-  plugins: ['react'],
-  extends: ['eslint:recommended', 'plugin:react/recommended', 'plugin:react/jsx-runtime'],
-  settings: {
-    react: {
-      version: 'detect',
-    },
-  },
+  extends: [
+    'airbnb-base',
+    'eslint:recommended',
+    'prettier',
+    'plugin:import/recommended',
+
+    // Backend
+    'plugin:node/recommended',
+  ],
   env: {
-    commonjs: true,
-    es6: true,
-    node: true,
     browser: true,
+    es6: true,
+    jest: true,
+    node: true,
   },
   globals: {
     strapi: true,
   },
   rules: {
-    indent: ['error', 2, { SwitchCase: 1 }],
-    'linebreak-style': ['error', 'unix'],
-    'no-console': 0,
-    quotes: ['error', 'single'],
-    semi: ['error', 'always'],
-    'no-unused-vars': 'warn',
+    strict: ['error', 'global'],
+    'no-return-await': 'error',
+    'object-shorthand': ['error', 'always', { avoidExplicitReturnArrows: true }],
+    'class-methods-use-this': 'off',
+    'default-param-last': 'warn',
+    'no-template-curly-in-string': 'warn',
+
+    // Backend
+    'node/no-unpublished-require': 'off',
+    'node/no-extraneous-require': 'off',
+    'node/exports-style': ['error', 'module.exports'],
+    'node/no-new-require': 'error',
+    'node/no-path-concat': 'error',
+    'node/no-callback-literal': 'error',
+    'node/handle-callback-err': 'error',
+    'no-restricted-syntax': 'off',
+    'no-await-in-loop': 'off',
+    'no-console': 'off',
+    'no-shadow': 'off',
+    'no-use-before-define': [
+      'error',
+      {
+        functions: false,
+        classes: true,
+        variables: true,
+        allowNamedExports: false,
+      },
+    ],
+    'consistent-return': 'off',
   },
 };
