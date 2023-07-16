@@ -21,5 +21,6 @@ module.exports = {
     // 'max-classes-per-file': 'warn',
     'default-param-last': 'warn',
     'no-template-curly-in-string': 'warn',
+    'import/no-unresolved': 0,
   },
 };
