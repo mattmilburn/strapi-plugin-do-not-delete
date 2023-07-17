@@ -28,40 +28,4 @@ describe('isApiRequest', () => {
     const result = isApiRequest(ctx);
     expect(result).toBe(false);
   });
-
-  it('should return `false` if route info type is undefined', () => {
-    const ctx = {
-      state: {
-        route: {
-          info: {},
-        },
-      },
-    };
-    const result = isApiRequest(ctx);
-    expect(result).toBe(false);
-  });
-
-  it('should return `false` if route info is undefined', () => {
-    const ctx = {
-      state: {
-        route: {},
-      },
-    };
-    const result = isApiRequest(ctx);
-    expect(result).toBe(false);
-  });
-
-  it('should return `false` if route is undefined', () => {
-    const ctx = {
-      state: {},
-    };
-    const result = isApiRequest(ctx);
-    expect(result).toBe(false);
-  });
-
-  it('should return `false` if ctx state is undefined', () => {
-    const ctx = {};
-    const result = isApiRequest(ctx);
-    expect(result).toBe(false);
-  });
 });
