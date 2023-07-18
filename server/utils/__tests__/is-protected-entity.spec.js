@@ -1,3 +1,5 @@
+'use strict';
+
 const isProtectedEntity = require('../is-protected-entity');
 
 describe('isProtectedEntity', () => {
@@ -5,6 +7,7 @@ describe('isProtectedEntity', () => {
     const entity = { type: 'user' };
     const rules = [['type', 'is', 'user']];
     const result = isProtectedEntity(entity, rules);
+
     expect(result).toBe(true);
   });
 
@@ -12,6 +15,7 @@ describe('isProtectedEntity', () => {
     const entity = { type: 'user' };
     const rules = [['type', 'is', 'admin']];
     const result = isProtectedEntity(entity, rules);
+
     expect(result).toBe(false);
   });
 
@@ -19,6 +23,7 @@ describe('isProtectedEntity', () => {
     const entity = { type: 'user' };
     const rules = [['type', 'in', ['user', 'admin']]];
     const result = isProtectedEntity(entity, rules);
+
     expect(result).toBe(true);
   });
 
@@ -26,6 +31,7 @@ describe('isProtectedEntity', () => {
     const entity = { type: 'guest' };
     const rules = [['type', 'in', ['user', 'admin']]];
     const result = isProtectedEntity(entity, rules);
+
     expect(result).toBe(false);
   });
 
@@ -33,13 +39,13 @@ describe('isProtectedEntity', () => {
     const entity = { roles: ['admin', 'user'] };
     const rules = [['roles', 'has', 'admin']];
     const result = isProtectedEntity(entity, rules);
+
     expect(result).toBe(true);
   });
 
   it('should return `false` if entity attribute does not match the `has` rule', () => {
     const entity = { roles: ['user'] };
     const rules = [['roles', 'has', 'admin']];
-
     const result = isProtectedEntity(entity, rules);
 
     expect(result).toBe(false);
@@ -49,13 +55,13 @@ describe('isProtectedEntity', () => {
     const entity = { email: 'test@example.com' };
     const rules = [['email', 'matches', '^\\w+@example\\.com$']];
     const result = isProtectedEntity(entity, rules);
+
     expect(result).toBe(true);
   });
 
   it('should return `false` if entity attribute does not match the `matches` rule', () => {
     const entity = { email: 'test@gmail.com' };
     const rules = [['email', 'matches', '^\\w+@example\\.com$']];
-
     const result = isProtectedEntity(entity, rules);
 
     expect(result).toBe(false);
@@ -65,6 +71,7 @@ describe('isProtectedEntity', () => {
     const entity = { type: 'user' };
     const rules = [['name', 'unknown_comparator', 'user']];
     const result = isProtectedEntity(entity, rules);
+
     expect(result).toBe(false);
   });
 });
