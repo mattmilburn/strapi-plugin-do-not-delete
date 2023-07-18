@@ -1,4 +1,6 @@
-const isApiRequest = require("../is-api-request");
+'use strict';
+
+const isApiRequest = require('../is-api-request');
 
 describe('isApiRequest', () => {
   it('should return `true` if route info type is `content-api`', () => {
@@ -12,6 +14,7 @@ describe('isApiRequest', () => {
       },
     };
     const result = isApiRequest(ctx);
+
     expect(result).toBe(true);
   });
 
@@ -26,6 +29,7 @@ describe('isApiRequest', () => {
       },
     };
     const result = isApiRequest(ctx);
+
     expect(result).toBe(false);
   });
 });
