@@ -9,6 +9,9 @@ module.exports = {
     commonjs: true,
     mocha: true,
   },
+  parserOptions: {
+    requireConfigFile: false,
+  },
   rules: {
     'react/function-component-definition': [
       'error',
