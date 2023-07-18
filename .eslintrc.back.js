@@ -3,6 +3,7 @@
 module.exports = {
   extends: ['./.eslintrc.base.js', 'plugin:node/recommended'],
   rules: {
+    'import/no-unresolved': 0,
     'node/no-unpublished-require': 'off',
     'node/no-extraneous-require': 'off',
     'node/exports-style': ['error', 'module.exports'],
@@ -13,6 +14,7 @@ module.exports = {
     'no-restricted-syntax': 'off',
     'no-await-in-loop': 'off',
     'no-console': 'off',
+    'no-param-reassign': 0,
     'no-shadow': 'off',
     'no-use-before-define': [
       'error',
