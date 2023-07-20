@@ -19,6 +19,22 @@ describe('isProtectedEntity', () => {
     expect(result).toBe(false);
   });
 
+  it('should return `true` if entity attribute matches the `isNot` rule', () => {
+    const entity = { type: 'user' };
+    const rules = [['type', 'isNot', 'admin']];
+    const result = isProtectedEntity(entity, rules);
+
+    expect(result).toBe(true);
+  });
+
+  it('should return `false` if entity attribute does not match the `isNot` rule', () => {
+    const entity = { type: 'user' };
+    const rules = [['type', 'isNot', 'user']];
+    const result = isProtectedEntity(entity, rules);
+
+    expect(result).toBe(false);
+  });
+
   it('should return `true` if entity attribute matches the `in` rule', () => {
     const entity = { type: 'user' };
     const rules = [['type', 'in', ['user', 'admin']]];
@@ -35,6 +51,22 @@ describe('isProtectedEntity', () => {
     expect(result).toBe(false);
   });
 
+  it('should return `true` if entity attribute matches the `notIn` rule', () => {
+    const entity = { type: 'guest' };
+    const rules = [['type', 'notIn', ['user', 'admin']]];
+    const result = isProtectedEntity(entity, rules);
+
+    expect(result).toBe(true);
+  });
+
+  it('should return `false` if entity attribute does not match the `notIn` rule', () => {
+    const entity = { type: 'user' };
+    const rules = [['type', 'notIn', ['user', 'admin']]];
+    const result = isProtectedEntity(entity, rules);
+
+    expect(result).toBe(false);
+  });
+
   it('should return `true` if entity attribute matches the `has` rule', () => {
     const entity = { roles: ['admin', 'user'] };
     const rules = [['roles', 'has', 'admin']];
@@ -46,6 +78,22 @@ describe('isProtectedEntity', () => {
   it('should return `false` if entity attribute does not match the `has` rule', () => {
     const entity = { roles: ['user'] };
     const rules = [['roles', 'has', 'admin']];
+    const result = isProtectedEntity(entity, rules);
+
+    expect(result).toBe(false);
+  });
+
+  it('should return `true` if entity attribute matches the `hasNot` rule', () => {
+    const entity = { roles: ['user'] };
+    const rules = [['roles', 'hasNot', 'admin']];
+    const result = isProtectedEntity(entity, rules);
+
+    expect(result).toBe(true);
+  });
+
+  it('should return `false` if entity attribute does not match the `has` rule', () => {
+    const entity = { roles: ['admin', 'user'] };
+    const rules = [['roles', 'hasNot', 'admin']];
     const result = isProtectedEntity(entity, rules);
 
     expect(result).toBe(false);
