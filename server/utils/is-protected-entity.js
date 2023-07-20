@@ -24,8 +24,9 @@ const isProtectedEntity = (entity, rules) =>
   rules.some((rule) => {
     const [attr, comparator, value] = rule;
     const entityAttr = entity[attr];
+    const comparatorAction = COMPARATOR_ACTION_STRATEGY[comparator];
 
-    return !!COMPARATOR_ACTION_STRATEGY[comparator](value, entityAttr);
+    return !!(comparatorAction && comparatorAction(value, entityAttr));
   });
 
 module.exports = isProtectedEntity;
