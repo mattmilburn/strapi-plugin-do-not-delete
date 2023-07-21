@@ -91,7 +91,7 @@ describe('isProtectedEntity', () => {
     expect(result).toBe(true);
   });
 
-  it('should return `false` if entity attribute does not match the `has` rule', () => {
+  it('should return `false` if entity attribute does not match the `hasNot` rule', () => {
     const entity = { roles: ['admin', 'user'] };
     const rules = [['roles', 'hasNot', 'admin']];
     const result = isProtectedEntity(entity, rules);
@@ -113,6 +113,80 @@ describe('isProtectedEntity', () => {
     const result = isProtectedEntity(entity, rules);
 
     expect(result).toBe(false);
+  });
+
+  it('should return `true` if entity attribute matches the `lt` rule', () => {
+    const entity = { attribute: 1 };
+    const rules = [['attribute', 'lt', 2]];
+    const result = isProtectedEntity(entity, rules);
+
+    expect(result).toBe(true);
+  });
+
+  it('should return `false` if entity attribute does not match the `lt` rule', () => {
+    const entity = { attribute: 1 };
+
+    expect(isProtectedEntity(entity, [['attribute', 'lt', 1]])).toBe(false);
+    expect(isProtectedEntity(entity, [['attribute', 'lt', 0]])).toBe(false);
+  });
+
+  it('should return `true` if entity attribute matches the `lte` rule', () => {
+    const entity = { attribute: 1 };
+
+    expect(isProtectedEntity(entity, [['attribute', 'lte', 1]])).toBe(true);
+    expect(isProtectedEntity(entity, [['attribute', 'lte', 2]])).toBe(true);
+  });
+
+  it('should return `false` if entity attribute does not match the `lte` rule', () => {
+    const entity = { attribute: 1 };
+    const rules = [['attribute', 'lte', 0]];
+    const result = isProtectedEntity(entity, rules);
+
+    expect(result).toBe(false);
+  });
+
+  it('should return `true` if entity attribute matches the `gt` rule', () => {
+    const entity = { attribute: 1 };
+    const rules = [['attribute', 'gt', 0]];
+    const result = isProtectedEntity(entity, rules);
+
+    expect(result).toBe(true);
+  });
+
+  it('should return `false` if entity attribute does not match the `gt` rule', () => {
+    const entity = { attribute: 1 };
+    expect(isProtectedEntity(entity, [['attribute', 'gt', 1]])).toBe(false);
+    expect(isProtectedEntity(entity, [['attribute', 'gt', 2]])).toBe(false);
+  });
+
+  it('should return `true` if entity attribute matches the `gte` rule', () => {
+    const entity = { attribute: 1 };
+
+    expect(isProtectedEntity(entity, [['attribute', 'gte', 1]])).toBe(true);
+    expect(isProtectedEntity(entity, [['attribute', 'gte', 0]])).toBe(true);
+  });
+
+  it('should return `false` if entity attribute does not match the `gte` rule', () => {
+    const entity = { attribute: 1 };
+    const rules = [['attribute', 'gte', 2]];
+    const result = isProtectedEntity(entity, rules);
+
+    expect(result).toBe(false);
+  });
+
+  it('should return `true` if entity attribute matches the `between` rule', () => {
+    const entity = { attribute: 1 };
+
+    expect(isProtectedEntity(entity, [['attribute', 'between', [0, 2]]])).toBe(true);
+    expect(isProtectedEntity(entity, [['attribute', 'between', [0, 1]]])).toBe(true);
+    expect(isProtectedEntity(entity, [['attribute', 'between', [1, 2]]])).toBe(true);
+  });
+
+  it('should return `false` if entity attribute does not match the `between` rule', () => {
+    const entity = { attribute: 1 };
+
+    expect(isProtectedEntity(entity, [['attribute', 'between', [-2, 0]]])).toBe(false);
+    expect(isProtectedEntity(entity, [['attribute', 'between', [2, 4]]])).toBe(false);
   });
 
   it('should return `false` if the provided `comparator` is unknown', () => {
