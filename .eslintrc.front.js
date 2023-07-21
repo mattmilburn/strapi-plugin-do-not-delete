@@ -12,6 +12,9 @@ module.exports = {
   parserOptions: {
     requireConfigFile: false,
   },
+  globals: {
+    window: true,
+  },
   rules: {
     'react/function-component-definition': [
       'error',
