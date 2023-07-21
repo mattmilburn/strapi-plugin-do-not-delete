@@ -1,23 +1,13 @@
 'use strict';
 
-const COMPARATORS = {
-  is: 'is',
-  isNot: 'isNot',
-  in: 'in',
-  notIn: 'notIn',
-  has: 'has',
-  hasNot: 'hasNot',
-  matches: 'matches',
-};
-
 const COMPARATOR_ACTION_STRATEGY = {
-  [COMPARATORS.is]: (value, entityAttr) => value === entityAttr,
-  [COMPARATORS.isNot]: (value, entityAttr) => value !== entityAttr,
-  [COMPARATORS.in]: (value, entityAttr) => value.includes(entityAttr),
-  [COMPARATORS.notIn]: (value, entityAttr) => !value.includes(entityAttr),
-  [COMPARATORS.has]: (value, entityAttr) => entityAttr.includes(value),
-  [COMPARATORS.hasNot]: (value, entityAttr) => !entityAttr.includes(value),
-  [COMPARATORS.matches]: (value) => RegExp(value).test(),
+  is: (value, attr) => value === attr,
+  isNot: (value, attr) => value !== attr,
+  in: (value, attr) => value.includes(attr),
+  notIn: (value, attr) => !value.includes(attr),
+  has: (value, attr) => attr.includes(value),
+  hasNot: (value, attr) => !attr.includes(value),
+  matches: (value, attr) => RegExp(value).test(attr),
 };
 
 const isProtectedEntity = (entity, rules) =>
