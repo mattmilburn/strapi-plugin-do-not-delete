@@ -196,4 +196,26 @@ describe('isProtectedEntity', () => {
 
     expect(result).toBe(false);
   });
+
+  it('should return `false` if all the provided rules are falsy', () => {
+    const entity = { attribute: 1 };
+    const rules = [
+      ['attribute', 'is', 0],
+      ['attribute', 'is', 2],
+    ];
+    const result = isProtectedEntity(entity, rules);
+
+    expect(result).toBe(false);
+  });
+
+  it('should return `true` if at least one of the provided rules is truly', () => {
+    const entity = { attribute: 1 };
+    const rules = [
+      ['attribute', 'is', 0],
+      ['attribute', 'is', 1],
+    ];
+    const result = isProtectedEntity(entity, rules);
+
+    expect(result).toBe(false);
+  });
 });
