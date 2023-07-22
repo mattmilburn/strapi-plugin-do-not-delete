@@ -58,14 +58,27 @@ module.exports = {
 The items in each comparison array must follow the format:
 
 ```js
-[ 'attribute', 'comparator', 'value or pattern' ]
+['attribute', 'comparator', 'value or pattern']
 ```
 
 | Comparator | Description |
 | -- | -- |
-| `has` | Does the string `attribute` contain `value`?  |
-| `in` | Does the `value` array include `attribute`? |
 | `is` | Strict equality with `===` |
+| `isNot` | Strict inequality with `!==` |
+| `in` | Does the `value` array include `attribute`? |
+| `notIn` | Does the `value` array not include `attribute`? |
+| `has` | Does the `attribute` contain `value`? |
+| `hasNot` | Does the `attribute` not contain `value`? |
+| `lt` | Is `attribute` less than `value`? |
+| `lte` | Is `attribute` less than or equal to `value`? |
+| `gt` | Is `attribute` greater than `value`? |
+| `gte` | Is `attribute` greater than or equal to `value`? |
+| `between` | Does `attribute` fall between the pair of `values`? |
+| `after` | Does `attribute` occur after the `value` date? |
+| `before` | Does `attribute` occur before the `value` date? |
+| `day` | Does `attribute` occur on the same day of the `value` date? |
+| `month` | Does `attribute` occur in the same month of the `value` date? |
+| `year` | Does `attribute` occur in the same year of the `value` date? |
 | `matches` | RegExp test against `pattern` (do not include outer slashes) |
 
 ```js
@@ -77,11 +90,33 @@ module.exports = {
     config: {
       contentTypes: {
         'api::page.page': [
+          // Equality.
           ['slug', 'is', 'home'],
+          ['slug', 'isNot', 'test'],
+
+          // Contains.
           ['slug', 'in', ['home', 'blog', '404']],
+          ['slug', 'notIn', ['test', 'temp']],
           ['slug', 'has', 'admin'],
+          ['slug', 'hasNot', '-test'],
+
+          // Regular expression.
           ['slug', 'matches', '^foobar'], // same as "starts with"
           ['slug', 'matches', 'foobar$'], // same as "ends with"
+
+          // Greater than or equal to.
+          ['rating', 'lt', 10],
+          ['rating', 'lte', 9],
+          ['rating', 'gt', 4],
+          ['rating', 'gte', 5],
+          ['rating', 'between', [3, 6]],
+
+          // Dates (any valid date string format can be used).
+          ['publishedAt', 'after', '2022-12-31'],
+          ['publishedAt', 'before', '2020-01-01T00:00:00.000Z'],
+          ['publishedAt', 'day', 'Wed, 01 Jan 2020 00:00:00 GMT'],
+          ['publishedAt', 'month', 'January 2020'],
+          ['publishedAt', 'year', '2023'],
         ],
       },
     },
@@ -116,5 +151,5 @@ If you are enjoying this plugin and feel extra appreciative, you can [buy me a b
 ## <a id="roadmap"></a>🚧 Roadmap
 * Settings page to visually manage protected entries and their applicable rules.
 * Edit view sidebar button to "lock" an entity based on it's `id`.
+* RBAC features.
 * Custom validation error messages.
-* More comparators for protection rules.
