@@ -11,6 +11,9 @@ module.exports = {
   },
   parserOptions: {
     requireConfigFile: false,
+    babelOptions: {
+      presets: ['@babel/preset-react'],
+    },
   },
   globals: {
     window: true,
