@@ -21,6 +21,23 @@ const COMPARATOR_ACTION_STRATEGY = {
   // Dates.
   after: (value, attr) => new Date(attr) > new Date(value),
   before: (value, attr) => new Date(attr) < new Date(value),
+  day: (value, attr) => {
+    const d1 = new Date(attr);
+    const d2 = new Date(value);
+
+    return (
+      d1.getUTCDate() === d2.getUTCDate() &&
+      d1.getUTCMonth() === d2.getUTCMonth() &&
+      d1.getUTCFullYear() === d2.getUTCFullYear()
+    );
+  },
+  month: (value, attr) => {
+    const d1 = new Date(attr);
+    const d2 = new Date(value);
+
+    return d1.getUTCMonth() === d2.getUTCMonth() && d1.getUTCFullYear() === d2.getUTCFullYear();
+  },
+  year: (value, attr) => new Date(attr).getUTCFullYear() === new Date(value).getUTCFullYear(),
 
   // Regular expression.
   matches: (value, attr) => RegExp(value).test(attr),
