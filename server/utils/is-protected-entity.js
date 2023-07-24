@@ -1,19 +1,28 @@
 'use strict';
 
 const COMPARATOR_ACTION_STRATEGY = {
+  // Equality.
   is: (value, attr) => value === attr,
   isNot: (value, attr) => value !== attr,
-  in: (value, attr) => value.includes(attr),
-  notIn: (value, attr) => !value.includes(attr),
+
+  // Contains.
   has: (value, attr) => attr.includes(value),
   hasNot: (value, attr) => !attr.includes(value),
-  lt: (value, attr) => attr < value,
-  lte: (value, attr) => attr <= value,
+  in: (value, attr) => value.includes(attr),
+  notIn: (value, attr) => !value.includes(attr),
+
+  // Greater than or equal to.
+  between: (value, attr) => attr >= value[0] && attr <= value[1],
   gt: (value, attr) => attr > value,
   gte: (value, attr) => attr >= value,
-  between: (value, attr) => attr >= value[0] && attr <= value[1],
-  before: (value, attr) => new Date(attr) < new Date(value),
+  lt: (value, attr) => attr < value,
+  lte: (value, attr) => attr <= value,
+
+  // Dates.
   after: (value, attr) => new Date(attr) > new Date(value),
+  before: (value, attr) => new Date(attr) < new Date(value),
+
+  // Regular expression.
   matches: (value, attr) => RegExp(value).test(attr),
 };
 
