@@ -190,6 +190,36 @@ describe('isProtectedEntity', () => {
     expect(isProtectedEntity(entity, [['attribute', 'between', [2, 4]]])).toBe(false);
   });
 
+  it('should return `true` if entity attribute matches the `after` rule', () => {
+    const entity = { attribute: '2020-01-01' };
+    const rules = [['attribute', 'after', '2019-12-31']];
+    const result = isProtectedEntity(entity, rules);
+
+    expect(result).toBe(true);
+  });
+
+  it('should return `false` if entity attribute does not match the `after` rule', () => {
+    const entity = { attribute: '2019-12-31' };
+
+    expect(isProtectedEntity(entity, [['attribute', 'after', '2019-12-31']])).toBe(false);
+    expect(isProtectedEntity(entity, [['attribute', 'after', '2020-01-01']])).toBe(false);
+  });
+
+  it('should return `true` if entity attribute matches the `before` rule', () => {
+    const entity = { attribute: '2019-12-31' };
+    const rules = [['attribute', 'before', '2020-01-01']];
+    const result = isProtectedEntity(entity, rules);
+
+    expect(result).toBe(true);
+  });
+
+  it('should return `false` if entity attribute does not match the `before` rule', () => {
+    const entity = { attribute: '2020-01-01' };
+
+    expect(isProtectedEntity(entity, [['attribute', 'before', '2019-12-31']])).toBe(false);
+    expect(isProtectedEntity(entity, [['attribute', 'before', '2020-01-01']])).toBe(false);
+  });
+
   it('should return `false` if the provided `comparator` is unknown', () => {
     const entity = { type: 'user' };
     const rules = [['name', 'unknown_comparator', 'user']];
