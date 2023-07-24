@@ -155,6 +155,7 @@ describe('isProtectedEntity', () => {
 
   it('should return `false` if entity attribute does not match the `gt` rule', () => {
     const entity = { attribute: 1 };
+
     expect(isProtectedEntity(entity, [['attribute', 'gt', 1]])).toBe(false);
     expect(isProtectedEntity(entity, [['attribute', 'gt', 2]])).toBe(false);
   });
@@ -208,7 +209,7 @@ describe('isProtectedEntity', () => {
     expect(result).toBe(false);
   });
 
-  it('should return `true` if at least one of the provided rules is truly', () => {
+  it('should return `true` if at least one of the provided rules is truthy', () => {
     const entity = { attribute: 1 };
     const rules = [
       ['attribute', 'is', 0],
@@ -216,6 +217,6 @@ describe('isProtectedEntity', () => {
     ];
     const result = isProtectedEntity(entity, rules);
 
-    expect(result).toBe(false);
+    expect(result).toBe(true);
   });
 });
