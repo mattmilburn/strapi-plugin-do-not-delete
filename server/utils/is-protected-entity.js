@@ -12,6 +12,8 @@ const COMPARATOR_ACTION_STRATEGY = {
   gt: (value, attr) => attr > value,
   gte: (value, attr) => attr >= value,
   between: (value, attr) => attr >= value[0] && attr <= value[1],
+  before: (value, attr) => new Date(attr) < new Date(value),
+  after: (value, attr) => new Date(attr) > new Date(value),
   matches: (value, attr) => RegExp(value).test(attr),
 };
 
