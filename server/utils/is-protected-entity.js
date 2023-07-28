@@ -21,7 +21,7 @@ const COMPARATOR_ACTION_STRATEGY = {
   // Dates.
   after: (value, attr) => new Date(attr) > new Date(value),
   before: (value, attr) => new Date(attr) < new Date(value),
-  day: (value, attr) => {
+  day(value, attr) {
     const d1 = new Date(attr);
     const d2 = new Date(value);
 
@@ -31,7 +31,7 @@ const COMPARATOR_ACTION_STRATEGY = {
       d1.getUTCFullYear() === d2.getUTCFullYear()
     );
   },
-  month: (value, attr) => {
+  month(value, attr) {
     const d1 = new Date(attr);
     const d2 = new Date(value);
 
