@@ -21,7 +21,7 @@ module.exports = async ({ strapi }) => {
       return;
     }
 
-    validateService.validate(entity, contentTypes[uid]);
+    validateService.validateDeleteAction(entity, contentTypes[uid]);
   };
 
   // Subscribe to lifecycle hook.

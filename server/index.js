@@ -9,10 +9,10 @@ module.exports = {
   config,
   // contentTypes,
   // controllers,
-  // destroy() {},
+  // destroy,
   // middlewares,
   // policies,
-  // register() {},
+  // register,
   // routes,
   services,
 };
