@@ -25,6 +25,8 @@
   },
   "scripts": {
     "prepare": "husky install",
+    "build": "tsc -p tsconfig.server.json",
+    "develop": "tsc -p tsconfig.server.json -w",
     "lint": "eslint --fix-dry-run --ext .js,.jsx,.ts,.tsx ./",
     "lint:fix": "eslint --fix --ext .js,.jsx,.ts,.tsx ./",
     "format": "prettier --check \"**/*.+(js|jsx|ts|tsx|json|css|md)\"",
