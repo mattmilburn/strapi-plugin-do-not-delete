@@ -1,8 +1,8 @@
-'use strict';
+import { Strapi } from '@strapi/strapi';
 
-const { getService } = require('../utils');
+import { getService } from '../utils';
 
-module.exports = async ({ strapi }) => {
+export default async ({ strapi }: { strapi: Strapi }) => {
   const configService = getService('config');
   const validateService = getService('validation');
   const { contentTypes } = await configService.get();
@@ -15,7 +15,7 @@ module.exports = async ({ strapi }) => {
     const { where } = params;
 
     // Ensure the entity exists first.
-    const entity = await strapi.db.query(uid).findOne({ where });
+    const entity = await strapi.db?.query(uid).findOne({ where });
 
     if (!entity) {
       return;
@@ -25,7 +25,7 @@ module.exports = async ({ strapi }) => {
   };
 
   // Subscribe to lifecycle hook.
-  strapi.db.lifecycles.subscribe({
+  strapi.db?.lifecycles.subscribe({
     models,
     beforeDelete,
   });

@@ -1,5 +1,3 @@
-'use strict';
-
 const COMPARATOR_ACTION_STRATEGY = {
   // Equality.
   is: (value, attr) => value === attr,
@@ -52,4 +50,4 @@ const isProtectedEntity = (entity, rules) =>
     return !!(comparatorAction && comparatorAction(value, entityAttr));
   });
 
-module.exports = isProtectedEntity;
+export default isProtectedEntity;
