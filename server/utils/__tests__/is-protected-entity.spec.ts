@@ -1,6 +1,4 @@
-'use strict';
-
-const isProtectedEntity = require('../is-protected-entity');
+import isProtectedEntity from '../is-protected-entity';
 
 describe('isProtectedEntity', () => {
   it('should return `true` if entity attribute matches the `is` rule', () => {
