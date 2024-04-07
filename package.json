@@ -4,10 +4,10 @@
   "description": "A plugin for Strapi CMS that protects certain entries from being deleted.",
   "license": "MIT",
   "strapi": {
-    "displayName": "Do Not Delete",
+    "kind": "plugin",
     "name": "do-not-delete",
-    "description": "Protects certain entries from being deleted.",
-    "kind": "plugin"
+    "displayName": "Do Not Delete",
+    "description": "Protects certain entries from being deleted."
   },
   "author": {
     "name": "Matt Milburn",
@@ -37,17 +37,17 @@
       "eslint --fix-dry-run"
     ]
   },
-  "dependencies": {},
-  "peerDependencies": {
-    "@strapi/strapi": "^4.13.1",
+  "dependencies": {
     "@strapi/utils": "^4.13.1"
+  },
+  "peerDependencies": {
+    "@strapi/strapi": "^4.13.1"
   },
   "devDependencies": {
     "@babel/core": "7.22.9",
     "@babel/eslint-parser": "7.22.9",
     "@babel/preset-react": "7.22.5",
     "@strapi/strapi": "^4.13.1",
-    "@strapi/utils": "^4.13.1",
     "@swc/core": "1.3.70",
     "@swc/jest": "0.2.27",
     "eslint": "8.45.0",
