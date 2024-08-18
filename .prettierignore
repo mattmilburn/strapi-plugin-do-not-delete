@@ -1,5 +1,4 @@
-build
+dist
 coverage
 public
-LICENSE.md
-README.md
+*.md
