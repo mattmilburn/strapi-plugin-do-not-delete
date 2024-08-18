@@ -51,9 +51,7 @@
     "watch:link": "strapi-plugin watch:link"
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx}": [
-      
-    ]
+    "*.{js,jsx,ts,tsx}": []
   },
   "prettier": {
     "endOfLine": "lf",
