@@ -1,8 +1,8 @@
-'use strict';
+import type { Core } from '@strapi/strapi';
 
-const { getService } = require('../utils');
+import { getService } from '../utils/index';
 
-module.exports = async ({ strapi }) => {
+const beforeDeleteLifecycle = async (strapi: Core.Strapi) => {
   const configService = getService('config');
   const validateService = getService('validation');
   const { contentTypes } = await configService.get();
@@ -30,3 +30,5 @@ module.exports = async ({ strapi }) => {
     beforeDelete,
   });
 };
+
+export default beforeDeleteLifecycle;
