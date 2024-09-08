@@ -61,22 +61,22 @@
     "trailingComma": "es5"
   },
   "dependencies": {
-    "@strapi/utils": "^5.0.0-rc.10",
-    "@types/jest": "29.5.12"
+    "@strapi/utils": "^5.0.0-rc.22"
   },
   "peerDependencies": {
-    "@strapi/sdk-plugin": "^5.1.0",
-    "@strapi/strapi": "^5.0.0-rc.10"
+    "@strapi/sdk-plugin": "^5.2.0",
+    "@strapi/strapi": "^5.0.0-rc.22"
   },
   "devDependencies": {
     "@babel/core": "7.24.3",
     "@babel/eslint-parser": "7.24.1",
     "@babel/preset-react": "7.24.1",
-    "@strapi/sdk-plugin": "^5.1.0",
-    "@strapi/strapi": "^5.0.0-rc.10",
-    "@strapi/typescript-utils": "^5.0.0-rc.10",
+    "@strapi/sdk-plugin": "^5.2.0",
+    "@strapi/strapi": "^5.0.0-rc.22",
+    "@strapi/typescript-utils": "^5.0.0-rc.22",
     "@swc/core": "1.4.8",
     "@swc/jest": "0.2.36",
+    "@types/jest": "29.5.12",
     "eslint": "8.57.0",
     "eslint-config-airbnb": "19.0.4",
     "eslint-config-airbnb-base": "15.0.0",
