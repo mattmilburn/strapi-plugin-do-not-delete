@@ -1,12 +1,37 @@
 import { errors } from '@strapi/utils';
 
-export const defaultConfig = {
+export type DoNotDeleteComparator =
+  'after' |
+  'before' |
+  'between' |
+  'has' |
+  'hasNot' |
+  'in' |
+  'notIn' |
+  'is' |
+  'isNot' |
+  'gt' |
+  'gte' |
+  'lt' |
+  'lte' |
+  'day' |
+  'month' |
+  'year' |
+  'matches';
+
+export type DoNotDeleteRule = [string, DoNotDeleteComparator, any];
+
+export interface DoNotDeletePluginConfig {
+  contentTypes?: Record<string, DoNotDeleteRule[]>;
+}
+
+export const defaultConfig: DoNotDeletePluginConfig = {
   contentTypes: {},
 };
 
 export default {
   default: defaultConfig,
-  validator(config) {
+  validator(config: DoNotDeletePluginConfig) {
     if (!config.contentTypes) {
       return;
     }

@@ -1,4 +1,4 @@
-import type { Core } from '@strapi/strapi';
+import { type Core } from '@strapi/strapi';
 
 import { getService } from '../utils/index';
 

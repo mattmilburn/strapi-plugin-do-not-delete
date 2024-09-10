@@ -1,5 +1,1 @@
-import beforeDelete from './beforeDelete';
-
-export default {
-  beforeDelete,
-};
+export { default as beforeDeleteLifecycle } from './beforeDelete';
