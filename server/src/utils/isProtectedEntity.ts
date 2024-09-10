@@ -1,4 +1,6 @@
-const COMPARATOR_ACTION_STRATEGY = {
+import { type DoNotDeleteRule } from '../config';
+
+const COMPARATOR_ACTIONS = {
   // Equality.
   is: (value, attr) => value === attr,
   isNot: (value, attr) => value !== attr,
@@ -41,11 +43,11 @@ const COMPARATOR_ACTION_STRATEGY = {
   matches: (value, attr) => RegExp(value).test(attr),
 };
 
-const isProtectedEntity = (entity, rules) =>
+const isProtectedEntity = (entity: any, rules: DoNotDeleteRule[]): boolean =>
   rules.some((rule) => {
     const [attr, comparator, value] = rule;
     const entityAttr = entity[attr];
-    const comparatorAction = COMPARATOR_ACTION_STRATEGY[comparator];
+    const comparatorAction = COMPARATOR_ACTIONS[comparator];
 
     return !!(comparatorAction && comparatorAction(value, entityAttr));
   });

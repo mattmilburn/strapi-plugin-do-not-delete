@@ -1,10 +1,10 @@
-import type { Core } from '@strapi/strapi';
+import { type Core } from '@strapi/strapi';
 
-import lifecycles from './lifecycles';
+import { beforeDeleteLifecycle } from './lifecycles';
 
 const bootstrap = ({ strapi }: { strapi: Core.Strapi }) => {
   // Lifecycles.
-  lifecycles.beforeDelete(strapi);
+  beforeDeleteLifecycle(strapi);
 };
 
 export default bootstrap;
