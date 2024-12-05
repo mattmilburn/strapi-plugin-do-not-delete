@@ -1,23 +1,23 @@
 import { errors } from '@strapi/utils';
 
 export type DoNotDeleteComparator =
-  'after' |
-  'before' |
-  'between' |
-  'has' |
-  'hasNot' |
-  'in' |
-  'notIn' |
-  'is' |
-  'isNot' |
-  'gt' |
-  'gte' |
-  'lt' |
-  'lte' |
-  'day' |
-  'month' |
-  'year' |
-  'matches';
+  | 'after'
+  | 'before'
+  | 'between'
+  | 'has'
+  | 'hasNot'
+  | 'in'
+  | 'notIn'
+  | 'is'
+  | 'isNot'
+  | 'gt'
+  | 'gte'
+  | 'lt'
+  | 'lte'
+  | 'day'
+  | 'month'
+  | 'year'
+  | 'matches';
 
 export type DoNotDeleteRule = [string, DoNotDeleteComparator, any];
 
@@ -39,13 +39,17 @@ export default {
     Object.keys(config.contentTypes).forEach((uid) => {
       // Require array for `contentTypes` prop.
       if (!Array.isArray(config.contentTypes[uid])) {
-        throw new errors.ValidationError(`Must define delete protection rules as an array for ${uid}.`);
+        throw new errors.ValidationError(
+          `Must define delete protection rules as an array for ${uid}.`
+        );
       }
 
       config.contentTypes[uid].forEach((rule) => {
         // Require arrays for `contentTypes` values.
         if (!Array.isArray(rule)) {
-          throw new errors.ValidationError(`Must define delete protection rules as an array for ${uid}.`);
+          throw new errors.ValidationError(
+            `Must define delete protection rules as an array for ${uid}.`
+          );
         }
 
         // Require all 3 arguments per rule.
@@ -86,7 +90,9 @@ export default {
 
         // Validate `in` and `notIn` comparators are compared against an array `value`.
         if (['in', 'notIn', 'between'].includes(comparator) && !Array.isArray(value)) {
-          throw new errors.ValidationError(`Invalid ${comparator} value for ${uid} protection rules.`);
+          throw new errors.ValidationError(
+            `Invalid ${comparator} value for ${uid} protection rules.`
+          );
         }
 
         // Validate `between` comparators are compared against an array of 2 `values`.

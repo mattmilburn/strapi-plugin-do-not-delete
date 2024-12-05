@@ -8,4 +8,3 @@ const bootstrap = ({ strapi }: { strapi: Core.Strapi }) => {
 };
 
 export default bootstrap;
-
