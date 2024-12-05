@@ -1,1 +1,1 @@
-export const PLUGIN_ID = 'strapi-plugin-do-not-delete';
+export const PLUGIN_ID = 'do-not-delete';

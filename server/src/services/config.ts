@@ -6,8 +6,8 @@ import { PLUGIN_ID } from '../constants';
 export type ConfigService = ReturnType<typeof configService>;
 
 const configService = ({ strapi }: { strapi: Core.Strapi }) => ({
-  get(): DoNotDeletePluginConfig {
-    const config = strapi.config.get(`plugin::${PLUGIN_ID}`, defaultConfig);
+  async get(): Promise<DoNotDeletePluginConfig> {
+    const config = await strapi.config.get(`plugin::${PLUGIN_ID}`, defaultConfig);
 
     return config;
   },
