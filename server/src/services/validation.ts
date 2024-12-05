@@ -3,7 +3,7 @@ import { errors } from '@strapi/utils';
 import { type DoNotDeleteRule } from '../config';
 import { isProtectedEntity } from '../utils';
 
-type ValidationService = ReturnType<typeof validationService>;
+export type ValidationService = ReturnType<typeof validationService>;
 
 const validationService = () => ({
   validateDeleteAction(entity: any, rules: DoNotDeleteRule[]): void {
@@ -18,5 +18,4 @@ const validationService = () => ({
   },
 });
 
-export { type ValidationService };
 export default validationService;

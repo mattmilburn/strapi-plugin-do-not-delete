@@ -1,4 +1,4 @@
-import { type DoNotDeleteRule } from '../../config';
+import type { DoNotDeleteRule } from '../../config';
 import isProtectedEntity from '../isProtectedEntity';
 
 describe('isProtectedEntity', () => {
@@ -355,7 +355,7 @@ describe('isProtectedEntity', () => {
 
   it('should return `false` if the provided `comparator` is unknown', () => {
     const entity = { type: 'user' };
-    // @ts-expect-error - Intentionally testing scenario with wrong type match. 
+    // @ts-expect-error - Intentionally testing scenario with wrong type match.
     const rules: DoNotDeleteRule[] = [['name', 'unknown_comparator', 'user']];
     const result = isProtectedEntity(entity, rules);
 
