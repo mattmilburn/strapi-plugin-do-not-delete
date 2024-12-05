@@ -1,11 +1,11 @@
 import { type Core } from '@strapi/strapi';
 
-import { getService } from '../utils/index';
+import { getService } from '../utils';
 
 const beforeDeleteLifecycle = async (strapi: Core.Strapi) => {
   const configService = getService('config');
   const validateService = getService('validation');
-  const { contentTypes } = configService.get();
+  const { contentTypes } = await configService.get();
   const models = Object.keys(contentTypes);
 
   // Lifecycle hook to protect certain entries from being deleted.
