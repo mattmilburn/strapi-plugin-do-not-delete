@@ -73,22 +73,25 @@
     "trailingComma": "es5"
   },
   "dependencies": {
-    "@strapi/utils": "^5.4.0"
+    "@strapi/utils": "^5.5.0"
   },
   "peerDependencies": {
-    "@strapi/strapi": "^5.4.0"
+    "@strapi/sdk-plugin": "^5.2.0",
+    "@strapi/strapi": "^5.5.0"
   },
   "devDependencies": {
+    "@eslint/js": "^9",
     "@strapi/sdk-plugin": "^5.2.0",
-    "@strapi/strapi": "^5.0.0",
-    "@strapi/typescript-utils": "^5.0.0",
+    "@strapi/strapi": "^5.5.0",
+    "@strapi/typescript-utils": "^5.5.0",
+    "@types/eslint__js": "^8",
+    "@types/jest": "^29",
     "eslint": "^9",
     "husky": "^9",
     "jest": "^29",
+    "jest-environment-jsdom": "^29",
     "lint-staged": "^15",
     "prettier": "^3",
-    "sqlite3": "^5",
-    "supertest": "^7",
     "ts-jest": "^29",
     "typescript": "^5.7.0",
     "typescript-eslint": "^7"
