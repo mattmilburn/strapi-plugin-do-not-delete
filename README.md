@@ -12,6 +12,7 @@
 * [Configuration](#configuration)
 * [User Guide](#user-guide)
 * [Troubleshooting](#troubleshooting)
+* [Migration](#migration)
 * [Support or Donate](#donate)
 * [Roadmap](#roadmap)
 
@@ -39,11 +40,9 @@ The object keys for `contentTypes` should be a valid model UID and the value sho
 #### Example
 Below, the comparison rule is querying if the `slug` value for `Page` is equal to `home`, and if this condition is true, the delete operation is cancelled.
 
-```js
-// ./config/plugins.js`
-'use strict';
-
-module.exports = {
+```ts
+// ./config/plugins.ts`
+export default () => ({
   'do-not-delete': {
     config: {
       contentTypes: {
@@ -53,13 +52,13 @@ module.exports = {
       },
     },
   },
-};
+});
 ```
 
 #### Comparators
 The items in each comparison array must follow the format:
 
-```js
+```ts
 ['attribute', 'comparator', 'value or pattern']
 ```
 
@@ -83,11 +82,9 @@ The items in each comparison array must follow the format:
 | `year` | Does `attribute` occur in the same year of the `value` date? |
 | `matches` | RegExp test against `pattern` (do not include outer slashes) |
 
-```js
-// ./config/plugins.js`
-'use strict';
-
-module.exports = {
+```ts
+// ./config/plugins.ts`
+export default () => ({
   'do-not-delete': {
     config: {
       contentTypes: {
@@ -123,7 +120,7 @@ module.exports = {
       },
     },
   },
-};
+});
 ```
 
 ## <a id="user-guide"></a>📘 User Guide
@@ -147,11 +144,13 @@ yarn build
 yarn develop
 ```
 
+## <a id="migration"></a>🚌 Migration
+Follow the [migration guides](MIGRATION.md) to keep your "do not delete" plugin up-to-date.
+
 ## <a id="donate"></a>❤️ Support or Donate
 If you are enjoying this plugin and feel extra appreciative, you can [buy me a beer or 3 🍺🍺🍺](https://www.buymeacoffee.com/mattmilburn).
 
 ## <a id="roadmap"></a>🚧 Roadmap
-* Settings page to visually manage protected entries and their applicable rules.
 * Edit view sidebar button to "lock" an entity based on it's `id`.
-* RBAC features.
 * Custom validation error messages.
+* RBAC features.
