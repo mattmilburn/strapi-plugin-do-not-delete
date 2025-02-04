@@ -1,4 +1,4 @@
-import { type DoNotDeleteRule } from '../config';
+import { type DoNotDeleteRule } from '../types';
 
 const COMPARATOR_ACTIONS = {
   // Equality.
@@ -43,7 +43,7 @@ const COMPARATOR_ACTIONS = {
   matches: (value, attr) => RegExp(value).test(attr),
 };
 
-const isProtectedEntity = (entity: any, rules: DoNotDeleteRule[]): boolean =>
+const isProtectedEntry = (entity: any, rules: DoNotDeleteRule[]): boolean =>
   rules.some((rule) => {
     const [attr, comparator, value] = rule;
     const entityAttr = entity[attr];
@@ -52,4 +52,4 @@ const isProtectedEntity = (entity: any, rules: DoNotDeleteRule[]): boolean =>
     return !!(comparatorAction && comparatorAction(value, entityAttr));
   });
 
-export default isProtectedEntity;
+export default isProtectedEntry;

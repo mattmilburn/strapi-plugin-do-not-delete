@@ -1,11 +1,11 @@
-import type { DoNotDeleteRule } from '../../config';
-import isProtectedEntity from '../isProtectedEntity';
+import type { DoNotDeleteRule } from '../../types';
+import isProtectedEntry from '../isProtectedEntry';
 
-describe('isProtectedEntity', () => {
+describe('isProtectedEntry', () => {
   it('should return `true` if entity attribute matches the `is` rule', () => {
     const entity = { type: 'user' };
     const rules: DoNotDeleteRule[] = [['type', 'is', 'user']];
-    const result = isProtectedEntity(entity, rules);
+    const result = isProtectedEntry(entity, rules);
 
     expect(result).toBe(true);
   });
@@ -13,7 +13,7 @@ describe('isProtectedEntity', () => {
   it('should return `false` if entity attribute does not match the `is` rule', () => {
     const entity = { type: 'user' };
     const rules: DoNotDeleteRule[] = [['type', 'is', 'admin']];
-    const result = isProtectedEntity(entity, rules);
+    const result = isProtectedEntry(entity, rules);
 
     expect(result).toBe(false);
   });
@@ -21,7 +21,7 @@ describe('isProtectedEntity', () => {
   it('should return `true` if entity attribute matches the `isNot` rule', () => {
     const entity = { type: 'user' };
     const rules: DoNotDeleteRule[] = [['type', 'isNot', 'admin']];
-    const result = isProtectedEntity(entity, rules);
+    const result = isProtectedEntry(entity, rules);
 
     expect(result).toBe(true);
   });
@@ -29,7 +29,7 @@ describe('isProtectedEntity', () => {
   it('should return `false` if entity attribute does not match the `isNot` rule', () => {
     const entity = { type: 'user' };
     const rules: DoNotDeleteRule[] = [['type', 'isNot', 'user']];
-    const result = isProtectedEntity(entity, rules);
+    const result = isProtectedEntry(entity, rules);
 
     expect(result).toBe(false);
   });
@@ -37,7 +37,7 @@ describe('isProtectedEntity', () => {
   it('should return `true` if entity attribute matches the `in` rule', () => {
     const entity = { type: 'user' };
     const rules: DoNotDeleteRule[] = [['type', 'in', ['user', 'admin']]];
-    const result = isProtectedEntity(entity, rules);
+    const result = isProtectedEntry(entity, rules);
 
     expect(result).toBe(true);
   });
@@ -45,7 +45,7 @@ describe('isProtectedEntity', () => {
   it('should return `false` if entity attribute does not match the `in` rule', () => {
     const entity = { type: 'guest' };
     const rules: DoNotDeleteRule[] = [['type', 'in', ['user', 'admin']]];
-    const result = isProtectedEntity(entity, rules);
+    const result = isProtectedEntry(entity, rules);
 
     expect(result).toBe(false);
   });
@@ -53,7 +53,7 @@ describe('isProtectedEntity', () => {
   it('should return `true` if entity attribute matches the `notIn` rule', () => {
     const entity = { type: 'guest' };
     const rules: DoNotDeleteRule[] = [['type', 'notIn', ['user', 'admin']]];
-    const result = isProtectedEntity(entity, rules);
+    const result = isProtectedEntry(entity, rules);
 
     expect(result).toBe(true);
   });
@@ -61,7 +61,7 @@ describe('isProtectedEntity', () => {
   it('should return `false` if entity attribute does not match the `notIn` rule', () => {
     const entity = { type: 'user' };
     const rules: DoNotDeleteRule[] = [['type', 'notIn', ['user', 'admin']]];
-    const result = isProtectedEntity(entity, rules);
+    const result = isProtectedEntry(entity, rules);
 
     expect(result).toBe(false);
   });
@@ -69,7 +69,7 @@ describe('isProtectedEntity', () => {
   it('should return `true` if entity attribute matches the `has` rule', () => {
     const entity = { roles: ['admin', 'user'] };
     const rules: DoNotDeleteRule[] = [['roles', 'has', 'admin']];
-    const result = isProtectedEntity(entity, rules);
+    const result = isProtectedEntry(entity, rules);
 
     expect(result).toBe(true);
   });
@@ -77,7 +77,7 @@ describe('isProtectedEntity', () => {
   it('should return `false` if entity attribute does not match the `has` rule', () => {
     const entity = { roles: ['user'] };
     const rules: DoNotDeleteRule[] = [['roles', 'has', 'admin']];
-    const result = isProtectedEntity(entity, rules);
+    const result = isProtectedEntry(entity, rules);
 
     expect(result).toBe(false);
   });
@@ -85,7 +85,7 @@ describe('isProtectedEntity', () => {
   it('should return `true` if entity attribute matches the `hasNot` rule', () => {
     const entity = { roles: ['user'] };
     const rules: DoNotDeleteRule[] = [['roles', 'hasNot', 'admin']];
-    const result = isProtectedEntity(entity, rules);
+    const result = isProtectedEntry(entity, rules);
 
     expect(result).toBe(true);
   });
@@ -93,7 +93,7 @@ describe('isProtectedEntity', () => {
   it('should return `false` if entity attribute does not match the `hasNot` rule', () => {
     const entity = { roles: ['admin', 'user'] };
     const rules: DoNotDeleteRule[] = [['roles', 'hasNot', 'admin']];
-    const result = isProtectedEntity(entity, rules);
+    const result = isProtectedEntry(entity, rules);
 
     expect(result).toBe(false);
   });
@@ -101,7 +101,7 @@ describe('isProtectedEntity', () => {
   it('should return `true` if entity attribute matches the `matches` rule', () => {
     const entity = { email: 'test@example.com' };
     const rules: DoNotDeleteRule[] = [['email', 'matches', '^\\w+@example\\.com$']];
-    const result = isProtectedEntity(entity, rules);
+    const result = isProtectedEntry(entity, rules);
 
     expect(result).toBe(true);
   });
@@ -109,7 +109,7 @@ describe('isProtectedEntity', () => {
   it('should return `false` if entity attribute does not match the `matches` rule', () => {
     const entity = { email: 'test@gmail.com' };
     const rules: DoNotDeleteRule[] = [['email', 'matches', '^\\w+@example\\.com$']];
-    const result = isProtectedEntity(entity, rules);
+    const result = isProtectedEntry(entity, rules);
 
     expect(result).toBe(false);
   });
@@ -120,7 +120,7 @@ describe('isProtectedEntity', () => {
       ['attribute', 'lt', 2],
       ['attribute', 'lt', 10],
     ];
-    const result = isProtectedEntity(entity, rules);
+    const result = isProtectedEntry(entity, rules);
 
     expect(result).toBe(true);
   });
@@ -131,7 +131,7 @@ describe('isProtectedEntity', () => {
       ['attribute', 'lt', 0],
       ['attribute', 'lt', 1],
     ];
-    const result = isProtectedEntity(entity, rules);
+    const result = isProtectedEntry(entity, rules);
 
     expect(result).toBe(false);
   });
@@ -142,7 +142,7 @@ describe('isProtectedEntity', () => {
       ['attribute', 'lte', 1],
       ['attribute', 'lte', 2],
     ];
-    const result = isProtectedEntity(entity, rules);
+    const result = isProtectedEntry(entity, rules);
 
     expect(result).toBe(true);
   });
@@ -153,7 +153,7 @@ describe('isProtectedEntity', () => {
       ['attribute', 'lte', -1],
       ['attribute', 'lte', 0],
     ];
-    const result = isProtectedEntity(entity, rules);
+    const result = isProtectedEntry(entity, rules);
 
     expect(result).toBe(false);
   });
@@ -164,7 +164,7 @@ describe('isProtectedEntity', () => {
       ['attribute', 'gt', -1],
       ['attribute', 'gt', 0],
     ];
-    const result = isProtectedEntity(entity, rules);
+    const result = isProtectedEntry(entity, rules);
 
     expect(result).toBe(true);
   });
@@ -175,7 +175,7 @@ describe('isProtectedEntity', () => {
       ['attribute', 'gt', 1],
       ['attribute', 'gt', 2],
     ];
-    const result = isProtectedEntity(entity, rules);
+    const result = isProtectedEntry(entity, rules);
 
     expect(result).toBe(false);
   });
@@ -186,7 +186,7 @@ describe('isProtectedEntity', () => {
       ['attribute', 'gte', 0],
       ['attribute', 'gte', 1],
     ];
-    const result = isProtectedEntity(entity, rules);
+    const result = isProtectedEntry(entity, rules);
 
     expect(result).toBe(true);
   });
@@ -197,7 +197,7 @@ describe('isProtectedEntity', () => {
       ['attribute', 'gte', 2],
       ['attribute', 'gte', 10],
     ];
-    const result = isProtectedEntity(entity, rules);
+    const result = isProtectedEntry(entity, rules);
 
     expect(result).toBe(false);
   });
@@ -209,7 +209,7 @@ describe('isProtectedEntity', () => {
       ['attribute', 'between', [0, 1]],
       ['attribute', 'between', [1, 2]],
     ];
-    const result = isProtectedEntity(entity, rules);
+    const result = isProtectedEntry(entity, rules);
 
     expect(result).toBe(true);
   });
@@ -220,7 +220,7 @@ describe('isProtectedEntity', () => {
       ['attribute', 'between', [-2, 0]],
       ['attribute', 'between', [2, 4]],
     ];
-    const result = isProtectedEntity(entity, rules);
+    const result = isProtectedEntry(entity, rules);
 
     expect(result).toBe(false);
   });
@@ -232,7 +232,7 @@ describe('isProtectedEntity', () => {
       ['attribute', 'after', '2019-12-31T19:12:27.873Z'],
       ['attribute', 'after', '2019-12-31'],
     ];
-    const result = isProtectedEntity(entity, rules);
+    const result = isProtectedEntry(entity, rules);
 
     expect(result).toBe(true);
   });
@@ -245,7 +245,7 @@ describe('isProtectedEntity', () => {
       ['attribute', 'after', '2019-12-31'],
       ['attribute', 'after', '2020-01-01'],
     ];
-    const result = isProtectedEntity(entity, rules);
+    const result = isProtectedEntry(entity, rules);
 
     expect(result).toBe(false);
   });
@@ -257,7 +257,7 @@ describe('isProtectedEntity', () => {
       ['attribute', 'before', '2019-12-31T19:12:27.873Z'],
       ['attribute', 'before', '2020-01-01'],
     ];
-    const result = isProtectedEntity(entity, rules);
+    const result = isProtectedEntry(entity, rules);
 
     expect(result).toBe(true);
   });
@@ -270,7 +270,7 @@ describe('isProtectedEntity', () => {
       ['attribute', 'before', '2019-12-31'],
       ['attribute', 'before', '2020-01-01'],
     ];
-    const result = isProtectedEntity(entity, rules);
+    const result = isProtectedEntry(entity, rules);
 
     expect(result).toBe(false);
   });
@@ -282,7 +282,7 @@ describe('isProtectedEntity', () => {
       ['attribute', 'day', '2020-01-01T19:12:27.873Z'],
       ['attribute', 'day', '2020-01-01'],
     ];
-    const result = isProtectedEntity(entity, rules);
+    const result = isProtectedEntry(entity, rules);
 
     expect(result).toBe(true);
   });
@@ -294,7 +294,7 @@ describe('isProtectedEntity', () => {
       ['attribute', 'day', '2020-01-01T19:12:27.873Z'],
       ['attribute', 'day', '2020-01-01'],
     ];
-    const result = isProtectedEntity(entity, rules);
+    const result = isProtectedEntry(entity, rules);
 
     expect(result).toBe(false);
   });
@@ -307,7 +307,7 @@ describe('isProtectedEntity', () => {
       ['attribute', 'month', '2020-01-31'],
       ['attribute', 'month', '2020-01'],
     ];
-    const result = isProtectedEntity(entity, rules);
+    const result = isProtectedEntry(entity, rules);
 
     expect(result).toBe(true);
   });
@@ -320,7 +320,7 @@ describe('isProtectedEntity', () => {
       ['attribute', 'month', '2020-01-01'],
       ['attribute', 'month', '2020-01'],
     ];
-    const result = isProtectedEntity(entity, rules);
+    const result = isProtectedEntry(entity, rules);
 
     expect(result).toBe(false);
   });
@@ -334,7 +334,7 @@ describe('isProtectedEntity', () => {
       ['attribute', 'year', '2020-12'],
       ['attribute', 'year', '2020'],
     ];
-    const result = isProtectedEntity(entity, rules);
+    const result = isProtectedEntry(entity, rules);
 
     expect(result).toBe(true);
   });
@@ -348,7 +348,7 @@ describe('isProtectedEntity', () => {
       ['attribute', 'year', '2020-01'],
       ['attribute', 'year', '2020'],
     ];
-    const result = isProtectedEntity(entity, rules);
+    const result = isProtectedEntry(entity, rules);
 
     expect(result).toBe(false);
   });
@@ -357,7 +357,7 @@ describe('isProtectedEntity', () => {
     const entity = { type: 'user' };
     // @ts-expect-error - Intentionally testing scenario with wrong type match.
     const rules: DoNotDeleteRule[] = [['name', 'unknown_comparator', 'user']];
-    const result = isProtectedEntity(entity, rules);
+    const result = isProtectedEntry(entity, rules);
 
     expect(result).toBe(false);
   });
@@ -368,7 +368,7 @@ describe('isProtectedEntity', () => {
       ['attribute', 'is', 0],
       ['attribute', 'is', 2],
     ];
-    const result = isProtectedEntity(entity, rules);
+    const result = isProtectedEntry(entity, rules);
 
     expect(result).toBe(false);
   });
@@ -379,7 +379,7 @@ describe('isProtectedEntity', () => {
       ['attribute', 'is', 0],
       ['attribute', 'is', 1],
     ];
-    const result = isProtectedEntity(entity, rules);
+    const result = isProtectedEntry(entity, rules);
 
     expect(result).toBe(true);
   });

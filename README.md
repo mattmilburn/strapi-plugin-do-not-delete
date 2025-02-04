@@ -128,7 +128,7 @@ export default () => ({
 ### Attempting to delete a protected entry
 When attempting to delete a protected entry, a validation error will display at the top of the screen that reads:
 
-> This protected entry cannot be deleted.
+> This entry is protected and cannot be deleted.
 
 ### Deleting an entry that is currently protected
 If you find yourself in a scenario where a protected entry actually does need to be deleted, you must first update the plugin config to remove the protection rule that applies to that entry.
@@ -151,6 +151,6 @@ Follow the [migration guides](MIGRATION.md) to keep your "do not delete" plugin 
 If you are enjoying this plugin and feel extra appreciative, you can [buy me a beer or 3 🍺🍺🍺](https://www.buymeacoffee.com/mattmilburn).
 
 ## <a id="roadmap"></a>🚧 Roadmap
-* Edit view sidebar button to "lock" an entity based on it's `id`.
+* Edit view sidebar button to "lock" an entry based on it's `id`.
 * Custom validation error messages.
 * RBAC features.
